@@ -1,0 +1,1241 @@
+
+
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Munshi's Inspire Space</title>
+
+<style>
+
+/* =========================
+   ASAS WEBSITE
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #17324d;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+    background: #102f4a;
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 32px;
+}
+
+header p {
+    margin: 8px 0 0;
+    font-size: 17px;
+}
+
+/* =========================
+   KANDUNGAN
+========================= */
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px 80px;
+}
+
+.welcome {
+    background: white;
+    border-radius: 22px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.welcome h2 {
+    font-size: 30px;
+    margin-top: 0;
+}
+
+.welcome p {
+    color: #587087;
+    line-height: 1.6;
+}
+
+/* =========================
+   GRID KAD
+========================= */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.card p {
+    color: #587087;
+    line-height: 1.5;
+}
+
+.card button {
+    border: none;
+    background: #d39e2e;
+    color: white;
+    padding: 13px 25px;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.card button:hover {
+    background: #b9861f;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+    background: #102f4a;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 5px;
+}
+
+/* =========================
+   CHAT BUTTON
+========================= */
+
+.chat-launcher {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: none;
+    background: #173b5b;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+    z-index: 9999;
+}
+
+/* =========================
+   CHATBOX
+========================= */
+
+.chatbox {
+    display: none;
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    width: 430px;
+    max-width: calc(100vw - 30px);
+    height: 600px;
+    background: white;
+    border-radius: 22px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    overflow: hidden;
+    flex-direction: column;
+    z-index: 9998;
+}
+
+/* =========================
+   CHAT HEADER
+========================= */
+
+.chat-header {
+    background: #102f4a;
+    color: white;
+    padding: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-header-title {
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.chat-header-subtitle {
+    font-size: 12px;
+    margin-top: 4px;
+    opacity: 0.85;
+}
+
+.close-chat {
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* =========================
+   RUANG CHAT
+========================= */
+
+.chat {
+    flex: 1;
+    overflow-y: auto;
+    padding: 18px;
+    background: #f4f7fb;
+}
+
+.bot-message,
+.user-message {
+    max-width: 85%;
+    padding: 12px 15px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+    font-size: 14px;
+    word-wrap: break-word;
+}
+
+.bot-message {
+    background: white;
+    border-top-left-radius: 5px;
+    margin-right: auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.user-message {
+    background: #173b5b;
+    color: white;
+    border-top-right-radius: 5px;
+    margin-left: auto;
+}
+
+/* =========================
+   QUICK RESPONSE
+========================= */
+
+.quick-replies {
+    padding: 10px 12px;
+    background: white;
+    border-top: 1px solid #eee;
+    max-height: 145px;
+    overflow-y: auto;
+}
+
+.quick-title {
+    font-size: 12px;
+    color: #777;
+    margin-bottom: 8px;
+}
+
+.quick-replies button {
+    border: 1px solid #d5dce3;
+    background: white;
+    color: #17324d;
+    border-radius: 20px;
+    padding: 8px 12px;
+    margin: 3px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.quick-replies button:hover {
+    background: #eef4f8;
+}
+
+/* =========================
+   INPUT
+========================= */
+
+.input-area {
+    display: flex;
+    padding: 12px;
+    background: white;
+    border-top: 1px solid #eee;
+}
+
+.input-area input {
+    flex: 1;
+    border: 1px solid #d6dce2;
+    border-radius: 25px;
+    padding: 13px 16px;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-area button {
+    width: 48px;
+    height: 48px;
+    margin-left: 8px;
+    border: none;
+    border-radius: 50%;
+    background: #173b5b;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (min-width: 601px) and (max-width: 900px) {
+
+    .container {
+        padding: 25px 18px 70px;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .chatbox {
+        width: 430px;
+        height: 620px;
+        right: 18px;
+        bottom: 90px;
+    }
+
+    .quick-replies button {
+        font-size: 13px;
+        padding: 10px 13px;
+    }
+
+}
+
+
+/* =========================================
+   TELEFON
+========================================= */
+
+@media (max-width: 600px) {
+
+    body {
+        font-size: 15px;
+    }
+
+    header {
+        padding: 20px 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    header p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .container {
+        padding: 18px 14px 80px;
+    }
+
+    .welcome {
+        padding: 25px 18px;
+        border-radius: 18px;
+    }
+
+    .welcome h2 {
+        font-size: 24px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .card {
+        padding: 25px 18px;
+    }
+
+
+    /* CHAT PENUH HAMPIR SATU SKRIN */
+
+    .chatbox {
+        position: fixed;
+
+        left: 8px;
+        right: 8px;
+
+        bottom: 8px;
+
+        width: auto;
+        max-width: none;
+
+        height: calc(100vh - 16px);
+
+        border-radius: 18px;
+
+        z-index: 99999;
+    }
+
+
+    /* HEADER CHAT */
+
+    .chat-header {
+        padding: 16px;
+    }
+
+    .chat-header-title {
+        font-size: 16px;
+    }
+
+
+    /* RUANG CHAT */
+
+    .chat {
+        padding: 14px;
+    }
+
+    .bot-message,
+    .user-message {
+        max-width: 90%;
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+
+
+    /* QUICK RESPONSE */
+
+    .quick-replies {
+        max-height: 160px;
+        padding: 8px;
+    }
+
+    .quick-title {
+        font-size: 12px;
+    }
+
+    .quick-replies button {
+        font-size: 13px;
+        padding: 10px 13px;
+        margin: 3px 2px;
+    }
+
+
+    /* INPUT */
+
+    .input-area {
+        padding: 10px;
+    }
+
+    .input-area input {
+        font-size: 15px;
+        padding: 13px 15px;
+    }
+
+    .input-area button {
+        width: 48px;
+        height: 48px;
+        flex-shrink: 0;
+    }
+
+
+    /* BUTANG CHAT */
+
+    .chat-launcher {
+        width: 62px;
+        height: 62px;
+
+        right: 15px;
+        bottom: 15px;
+
+        font-size: 27px;
+    }
+
+}
+
+
+/* =========================================
+   TELEFON KECIL
+========================================= */
+
+@media (max-width: 380px) {
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    .welcome h2 {
+        font-size: 21px;
+    }
+
+    .chatbox {
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        height: calc(100vh - 10px);
+    }
+
+    .quick-replies {
+        max-height: 145px;
+    }
+
+    .quick-replies button {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+    <h1>🌿 Profil Minda Sihat</h1>
+
+    <p>
+        Munshi's Inspire Space<br>
+        SMK Munshi Sulaiman
+    </p>
+
+</header>
+
+
+<!-- =========================
+     KANDUNGAN UTAMA
+========================= -->
+
+<div class="container">
+
+
+    <!-- WELCOME -->
+
+    <section class="welcome">
+
+        <h2>
+            Selamat Datang 🌿
+        </h2>
+
+        <p>
+            Ruang untuk anda memahami diri,
+            mengurus emosi dan mendapatkan
+            sokongan apabila diperlukan.
+        </p>
+
+    </section>
+
+
+    <!-- KAD -->
+
+    <div class="cards">
+
+
+        <!-- SEMAKAN RISIKO -->
+
+        <div class="card">
+
+            <h3>
+                🧠 Semakan Tahap Risiko
+            </h3>
+
+            <p>
+                Buat semakan kendiri untuk memahami
+                tahap kesejahteraan diri anda.
+            </p>
+
+            <button onclick="window.open(
+                'https://datastudio.google.com/u/0/reporting/524bbabd-f133-40a1-88ee-9be58fb2adbf/page/p_9iwjhnkh6d',
+                '_blank'
+            )">
+
+                Semak Sekarang
+
+            </button>
+
+        </div>
+
+
+        <!-- MINDABOT -->
+
+        <div class="card">
+
+            <h3>
+                💬 Munshi's MindaBOT
+            </h3>
+
+            <p>
+                Teman digital untuk berbual tentang
+                emosi, stres dan kehidupan.
+            </p>
+
+            <button onclick="openChat()">
+
+                Chat dengan MindaBOT
+
+            </button>
+
+        </div>
+
+
+        <!-- KAUNSELOR -->
+
+        <div class="card">
+
+            <h3>
+                📝 Hubungi Kaunselor
+            </h3>
+
+            <p>
+                Perlukan seseorang untuk mendengar?
+                Hubungi Guru Bimbingan dan Kaunseling.
+            </p>
+
+            <button onclick="window.open(
+                'https://forms.gle/mX4DCt5bzRCWeKm98',
+                '_blank'
+            )">
+
+                Hubungi Kaunselor
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <p>
+        Unit Bimbingan dan Kaunseling
+    </p>
+
+    <p>
+        SMK Munshi Sulaiman
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     CHAT LAUNCHER
+========================= -->
+
+<button
+    class="chat-launcher"
+    onclick="openChat()"
+    aria-label="Buka MindaBOT"
+>
+    💬
+</button>
+
+
+<!-- =========================
+     CHATBOX
+========================= -->
+
+<div
+    id="chatbox"
+    class="chatbox"
+>
+
+
+    <!-- CHAT HEADER -->
+
+    <div class="chat-header">
+
+        <div>
+
+            <div class="chat-header-title">
+                🌿 Munshi's MindaBOT
+            </div>
+
+            <div class="chat-header-subtitle">
+                Ruang selamat untuk berbual
+            </div>
+
+        </div>
+
+        <button
+            class="close-chat"
+            onclick="closeChat()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <!-- CHAT -->
+
+    <div
+        id="chat"
+        class="chat"
+    >
+
+        <div class="bot-message">
+
+            Hai! 🌿 Saya MindaBOT.
+
+            <br><br>
+
+            Saya boleh menjadi teman untuk anda
+            berbual tentang emosi, stres,
+            pelajaran dan kehidupan.
+
+            <br><br>
+
+            Apa yang anda rasa sekarang?
+
+        </div>
+
+    </div>
+
+
+    <!-- QUICK RESPONSE -->
+
+    <div class="quick-replies">
+
+        <div class="quick-title">
+            Pilih apa yang anda rasa:
+        </div>
+
+
+        <button onclick="quickSend('😊 Saya okay')">
+            😊 Saya okay
+        </button>
+
+        <button onclick="quickSend('😟 Saya rasa stres')">
+            😟 Saya rasa stres
+        </button>
+
+        <button onclick="quickSend('😔 Saya rasa sedih')">
+            😔 Saya rasa sedih
+        </button>
+
+        <button onclick="quickSend('😡 Saya rasa marah')">
+            😡 Saya rasa marah
+        </button>
+
+        <button onclick="quickSend('😰 Saya rasa risau')">
+            😰 Saya rasa risau
+        </button>
+
+        <button onclick="quickSend('😴 Saya penat')">
+            😴 Saya penat
+        </button>
+
+        <button onclick="quickSend('📚 Tekanan pelajaran')">
+            📚 Tekanan pelajaran
+        </button>
+
+        <button onclick="quickSend('📝 Peperiksaan')">
+            📝 Peperiksaan
+        </button>
+
+        <button onclick="quickSend('👥 Masalah kawan')">
+            👥 Masalah kawan
+        </button>
+
+        <button onclick="quickSend('🏠 Masalah di rumah')">
+            🏠 Masalah di rumah
+        </button>
+
+        <button onclick="quickSend('💔 Saya kecewa')">
+            💔 Saya kecewa
+        </button>
+
+        <button onclick="quickSend('😶 Tak tahu perasaan')">
+            😶 Tak tahu perasaan
+        </button>
+
+        <button onclick="quickSend('💬 Nak luahkan')">
+            💬 Nak luahkan
+        </button>
+
+        <button onclick="quickSend('🧘 Nak tenangkan diri')">
+            🧘 Nak tenangkan diri
+        </button>
+
+        <button onclick="quickSend('🆘 Perlukan bantuan')">
+            🆘 Perlukan bantuan
+        </button>
+
+        <button onclick="quickSend('📝 Hubungi kaunselor')">
+            📝 Hubungi kaunselor
+        </button>
+
+    </div>
+
+
+    <!-- INPUT -->
+
+    <div class="input-area">
+
+        <input
+            id="messageInput"
+            type="text"
+            placeholder="Taip mesej di sini..."
+            onkeydown="if(event.key === 'Enter') sendMessage()"
+        >
+
+        <button onclick="sendMessage()">
+            ➤
+        </button>
+
+    </div>
+
+
+</div>
+
+
+<script>
+
+/* =========================================
+   BUKA CHAT
+========================================= */
+
+function openChat() {
+
+    document.getElementById("chatbox").style.display = "flex";
+
+}
+
+
+/* =========================================
+   TUTUP CHAT
+========================================= */
+
+function closeChat() {
+
+    document.getElementById("chatbox").style.display = "none";
+
+}
+
+
+/* =========================================
+   QUICK RESPONSE
+========================================= */
+
+function quickSend(text) {
+
+    document.getElementById("messageInput").value = text;
+
+    sendMessage();
+
+}
+
+
+/* =========================================
+   FUNGSI UTAMA CHAT
+========================================= */
+
+function sendMessage() {
+
+    const input = document.getElementById("messageInput");
+
+    const chat = document.getElementById("chat");
+
+    const mesej = input.value.trim();
+
+    if (!mesej) return;
+
+
+    /* -------------------------
+       PAPARKAN MESEJ PELAJAR
+    ------------------------- */
+
+    const userMessage = document.createElement("div");
+
+    userMessage.className = "user-message";
+
+    userMessage.textContent = mesej;
+
+    chat.appendChild(userMessage);
+
+
+    /* -------------------------
+       CARI JAWAPAN
+    ------------------------- */
+
+    const jawapan = getBotResponse(mesej);
+
+
+    /* -------------------------
+       KOSONGKAN INPUT
+    ------------------------- */
+
+    input.value = "";
+
+
+    /* -------------------------
+       SCROLL
+    ------------------------- */
+
+    chat.scrollTop = chat.scrollHeight;
+
+
+    /* -------------------------
+       PAPARKAN JAWAPAN BOT
+    ------------------------- */
+
+    setTimeout(function() {
+
+        const botMessage = document.createElement("div");
+
+        botMessage.className = "bot-message";
+
+        botMessage.textContent = jawapan;
+
+        chat.appendChild(botMessage);
+
+        chat.scrollTop = chat.scrollHeight;
+
+    }, 500);
+
+}
+
+
+/* =========================================
+   JAWAPAN MINDABOT
+========================================= */
+
+function getBotResponse(mesej) {
+
+    const teks = mesej.toLowerCase();
+
+
+    /* =====================================
+       KEADAAN KECEMASAN
+    ===================================== */
+
+    if (
+        teks.includes("bunuh diri") ||
+        teks.includes("nak mati") ||
+        teks.includes("mahu mati") ||
+        teks.includes("cidera diri") ||
+        teks.includes("cederakan diri") ||
+        teks.includes("sakiti diri") ||
+        teks.includes("self harm") ||
+        teks.includes("self-harm")
+    ) {
+
+        return "Terima kasih kerana berani berkongsi perkara ini. Anda tidak perlu menghadapi keadaan ini seorang diri. Jika anda berada dalam bahaya atau rasa mungkin mencederakan diri, sila segera beritahu guru, ibu bapa, penjaga atau orang dewasa yang dipercayai dan dapatkan bantuan kecemasan. Sila juga berjumpa dengan Guru Bimbingan dan Kaunseling secepat mungkin.";
+
+    }
+
+
+    /* =====================================
+       QUICK RESPONSE - OKAY
+    ===================================== */
+
+    if (teks.includes("saya okay")) {
+
+        return "Alhamdulillah, bagus kalau anda rasa okay 😊 Teruskan menjaga diri, rehat secukupnya dan luangkan masa untuk perkara yang membuat anda rasa tenang. Jika suatu hari anda rasa tidak okay, anda boleh berkongsi dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       STRES
+    ===================================== */
+
+    if (
+        teks.includes("stres") ||
+        teks.includes("stress") ||
+        teks.includes("tertekan")
+    ) {
+
+        return "Saya faham. Rasa stres boleh berlaku apabila terlalu banyak perkara perlu difikirkan. Cuba tarik nafas perlahan-lahan, berehat seketika dan selesaikan satu perkara pada satu masa. Jika stres berterusan atau mengganggu pembelajaran dan kehidupan harian anda, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       SEDIH
+    ===================================== */
+
+    if (
+        teks.includes("sedih") ||
+        teks.includes("menangis") ||
+        teks.includes("murung") ||
+        teks.includes("sunyi")
+    ) {
+
+        return "Tidak mengapa untuk berasa sedih. Cuba beri diri anda sedikit masa untuk berehat dan lakukan perkara yang membuat anda rasa lebih tenang. Anda tidak perlu menyimpan semuanya seorang diri. Jika perasaan ini berterusan, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       MARAH
+    ===================================== */
+
+    if (
+        teks.includes("marah") ||
+        teks.includes("geram") ||
+        teks.includes("benci")
+    ) {
+
+        return "Apabila marah, cuba berhenti seketika sebelum bertindak. Tarik nafas perlahan-lahan dan beri diri anda ruang untuk bertenang. Jika anda sukar mengawal kemarahan atau ia mengganggu hubungan dengan orang lain, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       RISau / CEMAS
+    ===================================== */
+
+    if (
+        teks.includes("risau") ||
+        teks.includes("cemas") ||
+        teks.includes("takut") ||
+        teks.includes("bimbang")
+    ) {
+
+        return "Rasa risau atau takut boleh berlaku apabila kita memikirkan perkara yang belum berlaku. Cuba fokus kepada perkara yang boleh anda kawal sekarang dan tarik nafas perlahan-lahan. Jika rasa risau mengganggu pembelajaran atau kehidupan harian, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       PENAT
+    ===================================== */
+
+    if (
+        teks.includes("penat") ||
+        teks.includes("letih") ||
+        teks.includes("tak cukup tidur") ||
+        teks.includes("susah tidur")
+    ) {
+
+        return "Jika anda penat, cuba berikan diri anda masa untuk berehat dan pastikan tidur mencukupi. Jangan paksa diri terlalu banyak. Jika keletihan berterusan atau mengganggu aktiviti harian, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       PELAJARAN
+    ===================================== */
+
+    if (
+        teks.includes("kerja sekolah") ||
+        teks.includes("tugasan") ||
+        teks.includes("assignment") ||
+        teks.includes("belajar") ||
+        teks.includes("pelajaran")
+    ) {
+
+        return "Banyak tugasan boleh membuatkan kita rasa terbeban. Cuba senaraikan tugasan yang perlu dibuat dan selesaikan satu demi satu. Jika tekanan pelajaran semakin berat, anda boleh berbincang dengan guru atau sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       PEPERIKSAAN
+    ===================================== */
+
+    if (
+        teks.includes("peperiksaan") ||
+        teks.includes("peperiksaan") ||
+        teks.includes("exam") ||
+        teks.includes("ujian") ||
+        teks.includes("spm")
+    ) {
+
+        return "Rasa risau tentang peperiksaan boleh berlaku kepada pelajar. Cuba buat jadual ulang kaji yang realistik dan fokus kepada satu topik pada satu masa. Jika tekanan peperiksaan terlalu berat, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       KAWAN / BULI
+    ===================================== */
+
+    if (
+        teks.includes("kawan") ||
+        teks.includes("rakan") ||
+        teks.includes("bergaduh") ||
+        teks.includes("buli") ||
+        teks.includes("dibuli")
+    ) {
+
+        return "Masalah dengan kawan atau rakan boleh memberi kesan kepada emosi kita. Jika selamat untuk berbuat demikian, cuba bercakap dengan tenang tentang masalah tersebut. Jika anda dibuli atau masalah berterusan, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       MASALAH RUMAH / KELUARGA
+    ===================================== */
+
+    if (
+        teks.includes("rumah") ||
+        teks.includes("keluarga") ||
+        teks.includes("ibu") ||
+        teks.includes("ayah") ||
+        teks.includes("mak") ||
+        teks.includes("bapa")
+    ) {
+
+        return "Masalah di rumah boleh membuatkan seseorang berasa terbeban. Anda tidak perlu menghadapi semuanya seorang diri. Cuba bercakap dengan orang dewasa yang anda percayai. Anda juga boleh mendapatkan sokongan daripada Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       KECEWA
+    ===================================== */
+
+    if (
+        teks.includes("kecewa") ||
+        teks.includes("gagal") ||
+        teks.includes("tak berjaya")
+    ) {
+
+        return "Rasa kecewa memang tidak mudah. Jangan terlalu menyalahkan diri sendiri. Cuba fikirkan perkara yang masih boleh anda lakukan selepas ini. Jika anda memerlukan seseorang untuk mendengar, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       NAK LUAHKAN
+    ===================================== */
+
+    if (
+        teks.includes("luahkan") ||
+        teks.includes("luah") ||
+        teks.includes("nak cerita") ||
+        teks.includes("nak bercakap")
+    ) {
+
+        return "Sudah tentu. Anda boleh berkongsi apa yang sedang anda fikirkan. Tidak perlu susun ayat dengan sempurna. Jika perkara yang anda lalui terasa berat, sila berjumpa dengan Guru Bimbingan dan Kaunseling untuk mendapatkan sokongan.";
+
+    }
+
+
+    /* =====================================
+       TENANGKAN DIRI
+    ===================================== */
+
+    if (
+        teks.includes("tenangkan") ||
+        teks.includes("tenang") ||
+        teks.includes("relaks")
+    ) {
+
+        return "Cuba tarik nafas perlahan-lahan dan hembuskan perlahan. Duduk di tempat yang tenang dan beri diri anda sedikit masa. Anda juga boleh minum air atau berjalan perlahan-lahan. Jika anda masih sukar untuk bertenang, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+    }
+
+
+    /* =====================================
+       BANTUAN
+    ===================================== */
+
+    if (
+        teks.includes("perlukan bantuan") ||
+        teks.includes("nak bantuan") ||
+        teks.includes("tolong") ||
+        teks.includes("bantu saya")
+    ) {
+
+        return "Terima kasih kerana berani meminta bantuan. Anda tidak perlu menghadapi masalah seorang diri. Untuk mendapatkan bantuan dan sokongan yang sesuai, sila berjumpa dengan Guru Bimbingan dan Kaunseling di sekolah.";
+
+    }
+
+
+    /* =====================================
+       HUBUNGI KAUNSELOR
+    ===================================== */
+
+    if (
+        teks.includes("hubungi kaunselor") ||
+        teks.includes("kaunselor") ||
+        teks.includes("guru kaunseling")
+    ) {
+
+        return "Anda boleh mendapatkan sokongan daripada Guru Bimbingan dan Kaunseling. Sila tekan butang 'Hubungi Kaunselor' pada laman web ini untuk mengisi borang permohonan bantuan.";
+
+    }
+
+
+    /* =====================================
+       TAK TAHU PERASAAN
+    ===================================== */
+
+    if (
+        teks.includes("tak tahu perasaan") ||
+        teks.includes("tidak tahu perasaan")
+    ) {
+
+        return "Tidak mengapa kalau anda sendiri belum tahu apa yang sedang dirasakan. Cuba berhenti seketika dan perhatikan apa yang sedang bermain dalam fikiran anda. Anda juga boleh bercakap dengan Guru Bimbingan dan Kaunseling untuk membantu memahami apa yang anda sedang lalui.";
+
+    }
+
+
+    /* =====================================
+       JAWAPAN UMUM
+    ===================================== */
+
+    return "Terima kasih kerana berkongsi dengan MindaBOT. 🌿 Saya mungkin tidak dapat memahami semua keadaan anda melalui mesej sahaja. Jika perkara ini membuatkan anda tertekan atau anda memerlukan bantuan lanjut, sila berjumpa dengan Guru Bimbingan dan Kaunseling.";
+
+
+}
+
+</script>
+
+</body>
+
+</html>
